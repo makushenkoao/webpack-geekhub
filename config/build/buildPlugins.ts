@@ -3,7 +3,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import { IBuildOptions } from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 export const buildPlugins = (
   options: IBuildOptions
@@ -19,15 +19,14 @@ export const buildPlugins = (
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: true,
-    }),
   ];
 
   if (options.isDev) {
     plugin.push(new webpack.HotModuleReplacementPlugin());
     plugin.push(new ReactRefreshPlugin());
-    // plugin.push(new BundleAnalyzerPlugin({}));
+    // plugin.push(new BundleAnalyzerPlugin({
+    //   openAnalyzer: true,
+    // }));
   }
 
   return plugin;
