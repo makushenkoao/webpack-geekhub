@@ -1,5 +1,4 @@
 import webpack from "webpack";
-import path from "path";
 import { buildLoaders } from "./buildLoaders";
 import { buildPlugins } from "./buildPlugins";
 import { buildResolve } from "./buildResolve";
@@ -22,7 +21,7 @@ export const buildWebpackConfig = (
     module: {
       rules: buildLoaders(options),
     },
-    resolve: buildResolve(),
+    resolve: buildResolve(options),
     plugins: buildPlugins(options),
   };
 };

@@ -1,8 +1,8 @@
 import React from "react";
-import Counter from "./components/Counter/Counter";
-import "./index.scss";
-import UserAvatarIcon from "./shared/icons/user.svg";
-import userAvatarIcon from "./shared/icons/user.png";
+import Counter from "modules/Counter/Counter";
+import UserAvatarIcon from "assets/icons/user.svg";
+import userAvatarIcon from "assets/icons/user.png";
+import { Button } from "ui/Button";
 
 const App = () => {
   return (
@@ -11,6 +11,7 @@ const App = () => {
       <img src={userAvatarIcon} alt="user" />
       <UserAvatarIcon />
       <Counter />
+      <Button>123123</Button>
     </div>
   );
 };
