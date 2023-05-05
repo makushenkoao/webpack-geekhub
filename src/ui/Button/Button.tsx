@@ -22,6 +22,7 @@ export const Button: FC<IButtonProps> = ({
   return (
     <button className={classNames(styles.Button, styles[variant])} {...rest}>
       {children}
+      {/*<UserAvatarIcon/>*/}
     </button>
   );
 };
