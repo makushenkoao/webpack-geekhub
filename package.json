@@ -8,6 +8,8 @@
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production",
     "test:unit": "jest --config=./config/jest/jest.config.ts",
+    "test:ui": "npx loki test",
+    "test:ui:ok": "npx loki approve",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },
@@ -57,8 +59,10 @@
     "webpack-dev-server": "^4.13.3"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
   },
   "loki": {
     "configurations": {

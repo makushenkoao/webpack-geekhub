@@ -11,12 +11,17 @@ export default ({
   config.resolve.extensions.push(".ts", ".tsx");
   config.resolve.modules.push(path.resolve(__dirname, "../src"));
   config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-    if (rule.test instanceof RegExp && rule.test.toString().includes('svg')) {
+    if (rule.test instanceof RegExp && rule.test.toString().includes("svg")) {
       return { ...rule, exclude: /\.svg$/i };
     }
     return rule;
   });
   config.module.rules.push(buildStyleLoader(true));
   config.module.rules.push(buildSvgLoader());
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      __DEV__: true,
+    })
+  );
   return config;
 };

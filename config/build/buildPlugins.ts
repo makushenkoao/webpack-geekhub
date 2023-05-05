@@ -19,6 +19,9 @@ export const buildPlugins = (
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
+    new webpack.DefinePlugin({
+      __DEV__: JSON.stringify(options.isDev),
+    }),
   ];
 
   if (options.isDev) {

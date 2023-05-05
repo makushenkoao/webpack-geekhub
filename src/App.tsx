@@ -1,5 +1,5 @@
 import React from "react";
-import Counter from "modules/Counter/Counter";
+import { Counter } from "modules/Counter";
 import UserAvatarIcon from "assets/icons/user.svg";
 import userAvatarIcon from "assets/icons/user.png";
 import { Button } from "ui/Button";

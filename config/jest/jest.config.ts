@@ -1,6 +1,10 @@
 import path from "path";
 
 export default {
+  // A set of global variables that need to be available in all test environments
+  globals: {
+    __DEV__: true,
+  },
 
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
@@ -44,15 +48,12 @@ export default {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
   },
 
-
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: [
-    '<rootDir>/config/jest/setupTests.ts'
-  ],
+  setupFilesAfterEnv: ["<rootDir>/config/jest/setupTests.ts"],
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -99,9 +100,6 @@ export default {
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
-
-  // A set of global variables that need to be available in all test environments
-  // globals: {},
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",
