@@ -1,5 +1,9 @@
-import { CounterSchema } from "modules/Counter";
+import { ICounterSchema } from "modules/Counter";
+import { ICurrentUserSchema } from "modules/CurrentUser";
+import { ILoginSchema } from "modules/AuthByEmail";
 
 export interface StateSchema {
-  counter: CounterSchema;
+  counter: ICounterSchema;
+  currentUser: ICurrentUserSchema;
+  loginForm: ILoginSchema;
 }

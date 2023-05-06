@@ -17,10 +17,19 @@ export const Button: FC<IButtonProps> = ({
   className,
   variant = EButtonVariant.primary,
   children,
+  disabled,
   ...rest
 }) => {
   return (
-    <button className={classNames(styles.Button, styles[variant])} {...rest}>
+    <button
+      className={classNames(
+        styles.Button,
+        styles[variant],
+        disabled && styles.disabled,
+        className
+      )}
+      {...rest}
+    >
       {children}
       {/*<UserAvatarIcon/>*/}
     </button>
