@@ -21,6 +21,7 @@ export default ({
   config.plugins.push(
     new webpack.DefinePlugin({
       __DEV__: true,
+      __API_URL__: "",
     })
   );
   return config;

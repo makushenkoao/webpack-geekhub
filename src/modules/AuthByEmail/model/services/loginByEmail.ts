@@ -1,7 +1,7 @@
-import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { currentUserActions, ICurrentUser } from "modules/CurrentUser";
-import axios from "axios";
 import { LOCAL_STORAGE_USER_KEY } from "consts/localStorage";
+import { ThunkApiConfig } from "store";
 
 interface LoginByEmailPayload {
   email: string;
@@ -11,20 +11,21 @@ interface LoginByEmailPayload {
 export const loginByEmail = createAsyncThunk<
   ICurrentUser,
   LoginByEmailPayload,
-  {
-    rejectValue: string;
+  ThunkApiConfig<string>
+>(
+  "loginForm/loginByEmail",
+  async (payload, { rejectWithValue, dispatch, ...thunkApi }) => {
+    try {
+      const { data } = await thunkApi.extra.api.post<ICurrentUser>(
+        "/login",
+        payload
+      );
+      if (!data) throw new Error("User not found");
+      dispatch(currentUserActions.setCurrentUser(data));
+      localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(data));
+      return data;
+    } catch (e) {
+      return rejectWithValue("Invalid email or password");
+    }
   }
->("loginForm/loginByEmail", async (payload, { rejectWithValue, dispatch }) => {
-  try {
-    const { data } = await axios.post<ICurrentUser>(
-      "http://localhost:8000/login",
-      payload
-    );
-    if (!data) throw new Error("User not found");
-    dispatch(currentUserActions.setCurrentUser(data));
-    localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(data));
-    return data;
-  } catch (e) {
-    return rejectWithValue("Invalid email or password");
-  }
-});
+);

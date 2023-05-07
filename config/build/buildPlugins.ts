@@ -21,6 +21,7 @@ export const buildPlugins = (
     }),
     new webpack.DefinePlugin({
       __DEV__: JSON.stringify(options.isDev),
+      __API_URL__: JSON.stringify(options.apiUrl),
     }),
   ];
 

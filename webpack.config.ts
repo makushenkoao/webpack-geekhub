@@ -6,6 +6,7 @@ export default (env: IBuildEnv) => {
   const mode = env.mode || "development";
   const isDev = mode === "development";
   const port = env.port || 3000;
+  const apiUrl = env.apiUrl || "http://localhost:8000";
   const paths: IBuildPaths = {
     entry: path.resolve(__dirname, "src", "index.tsx"),
     output: path.resolve(__dirname, "build"),
@@ -18,5 +19,6 @@ export default (env: IBuildEnv) => {
     paths,
     isDev,
     port,
+    apiUrl,
   });
 };
